@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1024">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>NCHUIT 2016 Demo Day | by PastLeo</title>
+
+    <meta name="generator" content="Slide Show (S9)">
+    <meta name="author" content="PastLeo">
+
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <style>
+        h1,h2,h3,h4,h5,h6{
+            text-align: center;
+        }
+
+        /*loading style, title and author*/
+        div#loading{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transition: opacity 1s;
+
+            background: rgb(21, 21, 21);
+        }
+        div#loading h1{
+            margin: 0;
+            padding-top: 80px;
+            padding-bottom: 20px;
+
+            background: rgb(53, 53, 53);
+            border-bottom: #8ADFFF solid 3px;
+            color: rgb(152, 255, 189);
+        }
+        div#loading h3{
+            margin: 0;
+            padding-top: 20px;
+            padding-bottom: 20px;
+
+            background: rgb(72, 84, 66);
+            color: rgba(255, 179, 94, 1);
+        }
+        div#loading.done{
+            opacity:0;
+        }
+
+        div#loading .spinner {
+            -webkit-animation: rotation 1.4s linear infinite;
+            animation: rotation 1.4s linear infinite;
+            stroke: rgba(0, 149, 207, 1);
+            margin-left: auto;
+            display: block;
+            margin-right: auto;
+            margin-top: 10%;
+        }
+        @-webkit-keyframes rotation {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(270deg);
+                transform: rotate(270deg);
+            }
+        }
+        @keyframes rotation {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(270deg);
+                transform: rotate(270deg);
+            }
+        }
+        div#loading .spinner .circle {
+            stroke-dasharray: 187;
+            stroke-dashoffset: 0;
+            -webkit-transform-origin: center;
+            -ms-transform-origin: center;
+            transform-origin: center;
+            -webkit-animation: turn 1.4s ease-in-out infinite;
+            animation: turn 1.4s ease-in-out infinite;
+        }
+        @-webkit-keyframes turn {
+            0% {
+                stroke-dashoffset: 187;
+            }
+            50% {
+                stroke-dashoffset: 46.75;
+                -webkit-transform: rotate(135deg);
+                transform: rotate(135deg);
+            }
+            100% {
+                stroke-dashoffset: 187;
+                -webkit-transform: rotate(450deg);
+                transform: rotate(450deg);
+            }
+        }
+        @keyframes turn {
+            0% {
+                stroke-dashoffset: 187;
+            }
+            50% {
+                stroke-dashoffset: 46.75;
+                -webkit-transform: rotate(135deg);
+                transform: rotate(135deg);
+            }
+            100% {
+                stroke-dashoffset: 187;
+                -webkit-transform: rotate(450deg);
+                transform: rotate(450deg);
+            }
+        }
+
+        /*the background*/
+        body {
+            background: #545454; /* Old browsers */
+            background: -moz-radial-gradient(center, ellipse cover,  #545454 0%, #262626 100%); /* FF3.6+ */
+            background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#545454), color-stop(100%,#262626)); /* Chrome,Safari4+ */
+            background: -webkit-radial-gradient(center, ellipse cover,  #545454 0%,#262626 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-radial-gradient(center, ellipse cover,  #545454 0%,#262626 100%); /* Opera 12+ */
+            background: -ms-radial-gradient(center, ellipse cover,  #545454 0%,#262626 100%); /* IE10+ */
+            background: radial-gradient(ellipse at center,  #545454 0%,#262626 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#545454', endColorstr='#262626',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /*normal step*/
+        .step {
+          color:rgb(152, 255, 189);
+          width: 1024px;
+          height: 576px;
+          padding: 40px 60px;
+
+          font-size: 32px;
+
+          opacity: 0.9;
+          line-height: 1.6;
+
+          transition: all 0.5s ease 0s;
+        }
+
+        .step.future {
+          opacity: 0;
+          pointer-events:none;
+        }
+
+        .step.active {
+          opacity: 1;
+          text-shadow: 0px 0px 20px black;
+        }
+
+        .step.present {
+            z-index: 100;
+        }
+
+        /*markdown elements*/
+        h2{
+            margin-top: 20%;
+            margin-bottom: 10px;
+        }
+
+        h4{
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        pre {
+            background-color: rgba(56, 186, 112, 1);
+            padding: 15px;
+            overflow: auto;
+        }
+
+        code {
+            background-color: rgba(56, 186, 112, 0.82);
+            color: #D1CABC;
+            border-radius: 10px;
+            padding: 7px;
+            font-family: "Consolas","Montserrat",sans-serif;
+        }
+
+        blockquote {
+            margin: 0px;
+            padding-left: 40px;
+            border-left: 10px solid #000;
+            color: rgba(105, 105, 105, 1)
+        }
+
+        blockquote blockquote{
+            border: none;
+        }
+
+        blockquote p{
+            margin: 0;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        ul {
+            padding-left: 1.75em;
+            margin: 0px 0px 20px;
+        }
+
+        a {
+            color: rgba(0, 149, 207, 1);
+        }
+
+        strong {
+            color: rgba(255, 179, 94, 1);
+        }
+
+        /*controls*/
+
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+
+        .arrow {
+            width: 0px;
+            height: 0px;
+            border: 30px solid rgba(153, 186, 213, 0.5);
+            float: left;
+            margin-right: 30px;
+            -moz-user-select: none;
+        }
+
+        .prev {
+            border-top-color: transparent;
+            border-bottom-color: transparent;
+            border-left-color: transparent;
+            border-left-width: 0px;
+            border-right-width: 50px;
+        }
+
+        .prev:hover {
+            border-right-color: rgba(194, 217, 225, 1);
+            cursor: pointer;
+        }
+
+        .next {
+            border-top-color: transparent;
+            border-bottom-color: transparent;
+            border-right-color: transparent;
+            border-left-width: 50px;
+            border-right-width: 0px;
+        }
+
+        .next:hover{
+            border-left-color: rgba(194, 217, 225, 1);
+            cursor: pointer;
+        }
+
+        /* customization options of steps*/
+
+        .slide {
+            background: #383838;
+            border: black solid 1px;
+            border-radius: 10px;
+            overflow: auto;
+        }
+        .slide.active {
+            box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 10px;
+        }
+
+        .step.unclickable {
+            pointer-events:none;
+        }
+
+        .step.center p {
+            text-align: center;
+        }
+
+        .step.showOnlyWhenPresent {
+            opacity: 0;
+            pointer-events:none;
+        }
+
+        .step.showOnlyWhenPresent.present {
+            opacity: 1;
+            pointer-events:default;
+        }
+
+        .step.picture img{
+            max-height: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .step.slogen h2{
+            margin-top: 15%;
+            font-size: 1.9em;
+        }
+
+        
+.step.slogen h2 {
+    margin-top: 20%;
+}
+
+.step.center-list ul {
+    margin: 0 auto;
+    display: table;
+}
+
+.step.opaqueWhenActive:not(.active) {
+    opacity: 0.3;
+    pointer-events: none;
+}
+.step.opaqueWhenActive.future {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+    </style>
+</head>
+
+<body class="impress-not-supported">
+
+<div id="impress">
+
+    <!-- note: assumes no header (breaking slides w/ SLIDE directive) -->
+
+    <div class='step opaqueWhenActive picture center' data-x='0' data-y='-875' data-z='0' data-scale='6' >
+      <!-- === begin markdown block ===
+
+      generated by markdown/1.2.0 on Ruby 2.2.4 (2015-12-16) [x86_64-linux]
+                on 2016-06-04 19:03:04 +0000 with Markdown engine kramdown (1.11.1)
+                  using options {}
+  -->
+
+<!-- _S9SLIDE_  opaqueWhenActive picture center x=0 y=-875 z=0 scale=6 -->
+
+<p> </p>
+
+<p> </p>
+
+<p><img src="http://i.imgur.com/SSSWhXx.png" alt="nchuit" /></p>
+
+<h3 id="nchuit-2016-demo-day">NCHUIT 2016 Demo Day</h3>
+
+
+    </div>
+
+    <div class='step opaqueWhenActive center picture center-list' data-x='0' data-y='-875' data-z='10000' data-scale='6' >
+      <!-- _S9SLIDE_  opaqueWhenActive center picture center-list x=0 y=-875 z=10000 scale=6 -->
+
+<h3 id="section">今天會做啥？</h3>
+
+<ul>
+  <li>講一下這學期我們做了啥</li>
+  <li>然後就來玩遊戲！</li>
+  <li>旁邊都有點心，到了晚上還有 Pizza 😎</li>
+</ul>
+
+<p><img src="http://i.giphy.com/iWkHDNtcHpB5e.gif" alt="eat-pizza" /></p>
+
+
+    </div>
+
+    <div class='step slogen showOnlyWhenPresent' data-x='-3000' data-y='-1750' data-z='18000' >
+      <!-- _S9SLIDE_  slogen showOnlyWhenPresent x=-3000 y=-1750 z=18000 -->
+
+<h2 id="section-1">寒假</h2>
+
+
+    </div>
+
+    <div class='step center picture center-list' data-x='-3000' data-y='-1750' data-z='20000' >
+      <!-- _S9SLIDE_  center picture center-list x=-3000 y=-1750 z=20000 -->
+
+<h3 id="workshop-project">台中 Workshop Project</h3>
+
+<p><img src="http://i.imgur.com/FDM2qdd.jpg" alt="TWPROJECT" /></p>
+
+<ul>
+  <li><a href="http://ppt.cc/rIbyS">上課資料</a></li>
+</ul>
+
+
+    </div>
+
+    <div class='step center picture' data-x='-1800' data-y='-1750' data-z='20000' >
+      <!-- _S9SLIDE_  center picture x=-1800 y=-1750 z=20000 -->
+
+<h3 id="sitcon-">SITCON 社遊</h3>
+
+<p><img src="http://i.imgur.com/QdSqH4k.jpg" alt="SITCON" /></p>
+
+
+    </div>
+
+    <div class='step slogen showOnlyWhenPresent' data-x='-600' data-y='-1750' data-z='18000' >
+      <!-- _S9SLIDE_  slogen showOnlyWhenPresent x=-600 y=-1750 z=18000 -->
+
+<h2 id="section-2">社團課程</h2>
+
+
+    </div>
+
+    <div class='step center picture center-list' data-x='-600' data-y='-1750' data-z='20000' >
+      <!-- _S9SLIDE_  center picture center-list x=-600 y=-1750 z=20000 -->
+
+<h3 id="git">GIT</h3>
+
+<p><img src="http://i.imgur.com/tRSuYtX.jpg" alt="gitit" /></p>
+
+<ul>
+  <li>Using Git-it, <a href="https://github.com/taichunmin/git-it-course-docker">Repo</a>, by <a href="https://github.com/taichunmin">taichunmin</a></li>
+</ul>
+
+
+    </div>
+
+    <div class='step slogen' data-x='600' data-y='-1750' data-z='20000' >
+      <!-- _S9SLIDE_  slogen x=600 y=-1750 z=20000 -->
+
+<h2 id="shell-unix">Shell (unix)</h2>
+
+<h4 id="slideshttpslidesnchuitcc104bshellpdf"><a href="http://slides.nchuit.cc/104B/shell.pdf">Slides</a></h4>
+
+<h4 id="ls-cp-vim--by-rayliuhttpsgithubcomray6"><code>ls</code>, <code>cp</code>, <code>vim</code> … by <a href="https://github.com/ray6">RayLiu</a></h4>
+
+
+    </div>
+
+    <div class='step slogen center picture' data-x='1800' data-y='-1750' data-z='20000' >
+      <!-- _S9SLIDE_  slogen center picture x=1800 y=-1750 z=20000 -->
+
+<h2 id="sql">SQL</h2>
+
+<h4 id="slideshttpslidescomtaichunminmysql"><a href="http://slides.com/taichunmin/mysql">Slides</a></h4>
+
+<h4 id="select--where--join--insert--by-taichunminhttpsgithubcomtaichunmin"><code>SELECT</code> / <code>WHERE</code> / <code>JOIN</code> / <code>INSERT</code> … by <a href="https://github.com/taichunmin">taichunmin</a></h4>
+
+
+    </div>
+
+    <div class='step slogen center picture center-list' data-x='3000' data-y='-1750' data-z='20000' >
+      <!-- _S9SLIDE_  slogen center picture center-list x=3000 y=-1750 z=20000 -->
+
+<h3 id="node--websocket">Node &amp; Websocket</h3>
+
+<p><img src="http://i.imgur.com/zpF4fQi.jpg" alt="node-websocket" /></p>
+
+<ul>
+  <li><a href="http://slides.com/jd615645/nodejs_socket">Slides</a> / <a href="https://github.com/NCHUIT/104B_nodejs_socketio">上課練習成果 Demo - 聊天室</a> by <a href="https://github.com/jd615645">jd615645</a></li>
+</ul>
+
+
+    </div>
+
+    <div class='step slogen' data-x='-3000' data-y='-1050' data-z='20000' >
+      <!-- _S9SLIDE_  slogen x=-3000 y=-1050 z=20000 -->
+
+<h2 id="server-devops-with-docker">Server (DevOps with docker)</h2>
+
+<h4 id="httpslidesnchuitcc104b104bdevopsdockerslideshtml--repohttpsgithubcomnchuit104bdevopsdocker"><a href="http://slides.nchuit.cc/104B/104B_devOps_docker/slides.html">投影片</a> / <a href="https://github.com/NCHUIT/104B_devOps_docker">Repo</a></h4>
+
+<h4 id="dockernginx-by-chgu82837httpsgithubcomchgu82837">權限控制、軟體安裝、Docker、Nginx by <a href="https://github.com/chgu82837">chgu82837</a></h4>
+
+
+    </div>
+
+    <div class='step center picture' data-x='-1800' data-y='-1050' data-z='20000' >
+      <!-- _S9SLIDE_  center picture x=-1800 y=-1050 z=20000 -->
+
+<h3 id="phaser-">Phaser 社團課程</h3>
+
+<p><img src="http://i.imgur.com/JK8GGXy.jpg" alt="phaser" /></p>
+
+
+    </div>
+
+    <div class='step center picture center-list' data-x='-600' data-y='-1050' data-z='20000' >
+      <!-- _S9SLIDE_  center picture center-list x=-600 y=-1050 z=20000 -->
+
+<h3 id="section-3">坦克大戰</h3>
+
+<p><img src="http://i.imgur.com/VYmDYSI.jpg" alt="tanks" /></p>
+
+<ul>
+  <li><a href="http://slides.nchuit.cc/104B/104B_phaser_tanks_war/">Slides</a> / <a href="http://slides.nchuit.cc/104B/104B_phaser_tanks_war/03_AI/demo/demo.html">The Game</a> / <a href="https://github.com/NCHUIT/104B_phaser_tanks_war">Repo</a>, by <a href="https://github.com/lukechu1997">lukechu1997</a> and <a href="https://github.com/tim54100">tim54100</a></li>
+</ul>
+
+
+    </div>
+
+    <div class='step center picture center-list' data-x='600' data-y='-1050' data-z='20000' >
+      <!-- _S9SLIDE_  center picture center-list x=600 y=-1050 z=20000 -->
+
+<h3 id="section-4">楓之谷</h3>
+
+<p><img src="http://i.imgur.com/c1oGiW1.png" alt="maple-story" /></p>
+
+<ul>
+  <li><a href="https://github.com/NCHUIT/104B_phaser_maple_game/raw/master/01_Basic/maple_01.pptx">Slides 1</a> / <a href="http://slides.com/jayhung97724/104b_phaser_maple_game">Slides 2</a> / <a href="http://slides.nchuit.cc/104B/104B_phaser_maple_game/02_Shoot/">The Game</a> / <a href="https://github.com/NCHUIT/104B_phaser_tanks_war">Repo</a></li>
+  <li>by <a href="https://github.com/LinYuChien">LinYuChien</a> and <a href="https://github.com/jayhung97724">HaoYoYo</a></li>
+</ul>
+
+
+    </div>
+
+    <div class='step slogen showOnlyWhenPresent' data-x='1800' data-y='-1050' data-z='18000' >
+      <!-- _S9SLIDE_  slogen showOnlyWhenPresent x=1800 y=-1050 z=18000 -->
+
+<h2 id="cpe--itsa">週二程式競賽分享會 - CPE &amp; ITSA</h2>
+
+
+    </div>
+
+    <div class='step ' data-x='1800' data-y='-1050' data-z='20000' >
+      <!-- _S9SLIDE_  x=1800 y=-1050 z=20000 -->
+
+<h3 id="itsa-">ITSA 績優團隊</h3>
+
+<ol>
+  <li>小心大呆鵝——李家駿、洪浩祐、陳盈達</li>
+  <li>中興肥宅——王文樺、陳鐿文、蔡辰彥</li>
+  <li>史上最強山下智久護衛隊——杜津、劉鴻文、劉冠閎</li>
+  <li>nyycrazymonkey——魏子庭</li>
+  <li>somebody–尹昊廷</li>
+</ol>
+
+
+    </div>
+
+    <div class='step slogen showOnlyWhenPresent' data-x='3000' data-y='-1050' data-z='18000' >
+      <!-- _S9SLIDE_  slogen showOnlyWhenPresent x=3000 y=-1050 z=18000 -->
+
+<h2 id="section-5">周六活動</h2>
+
+
+    </div>
+
+    <div class='step center picture center-list' data-x='3000' data-y='-1050' data-z='20000' >
+      <!-- _S9SLIDE_  center picture center-list x=3000 y=-1050 z=20000 -->
+
+<h3 id="arduino-">Arduino 教學</h3>
+
+<p><img src="http://i.imgur.com/WILaF8T.jpg" alt="arduino" /></p>
+
+<ul>
+  <li>感謝樂富的教學!</li>
+</ul>
+
+
+    </div>
+
+    <div class='step slogen' data-x='-3000' data-y='-350' data-z='20000' >
+      <!-- _S9SLIDE_  slogen x=-3000 y=-350 z=20000 -->
+
+<h2 id="sitcon-x-nchuit--14">SITCON x NCHUIT 台中定期聚 #14</h2>
+
+<h4 id="kktixhttpsitconkktixcceventstaichung-meeting-14"><a href="http://sitcon.kktix.cc/events/taichung-meeting-14">KKTIX</a></h4>
+
+
+    </div>
+
+    <div class='step slogen' data-x='-1800' data-y='-350' data-z='20000' >
+      <!-- _S9SLIDE_  slogen x=-1800 y=-350 z=20000 -->
+
+<h2 id="section-6">逢甲資安入門分享</h2>
+
+<h4 id="web-sec-httpsdrivegooglecomopenid0b-xy7gvexhirejm4netjywdouke--httpsdrivegooglecomopenid0b-xy7gvexhirzgxozwxbzvzqqms"><a href="https://drive.google.com/open?id=0B-xy7gVEXhIrejM4NEtJYWdOUkE">Web-Sec 淺談</a> / <a href="https://drive.google.com/open?id=0B-xy7gVEXhIrZGxOZWxBZVZQQms">網路安全</a></h4>
+
+<h4 id="section-7">感謝逢甲陳俊佑以及張辰德的分享！</h4>
+
+
+    </div>
+
+    <div class='step slogen' data-x='-600' data-y='-350' data-z='20000' >
+      <!-- _S9SLIDE_  slogen x=-600 y=-350 z=20000 -->
+
+<h2 id="sitcon-x-nchuit--15">SITCON x NCHUIT 台中定期聚 #15</h2>
+
+<h4 id="kktixhttpsitconkktixcceventstaichung-meeting-15"><a href="http://sitcon.kktix.cc/events/taichung-meeting-15">KKTIX</a></h4>
+
+
+    </div>
+
+    <div class='step slogen' data-x='600' data-y='-350' data-z='20000' >
+      <!-- _S9SLIDE_  slogen x=600 y=-350 z=20000 -->
+
+<h2 id="section-8">帶你上雲端 - 科普的雲端軟體教學</h2>
+
+<h4 id="slideshttpslidesnchuitcc104bshauncloudcloudhtml-by-jd615645httpsgithubcomjd615645"><a href="http://slides.nchuit.cc/104B_shaunCloud/cloud.html#/">Slides</a> by <a href="https://github.com/jd615645">jd615645</a></h4>
+
+
+    </div>
+
+    <div class='step slogen showOnlyWhenPresent' data-x='1800' data-y='-350' data-z='18000' >
+      <!-- _S9SLIDE_  slogen showOnlyWhenPresent x=1800 y=-350 z=18000 -->
+
+<h2 id="section-9">一些我們做出來的小東西</h2>
+
+
+    </div>
+
+    <div class='step slogen' data-x='1800' data-y='-350' data-z='20000' >
+      <!-- _S9SLIDE_  slogen x=1800 y=-350 z=20000 -->
+
+<h2 id="section-10">期中考彩蛋 - 知興絕對</h2>
+
+<h4 id="httpalvis2015githubio"><a href="http://alvis2015.github.io/">傳送們</a></h4>
+
+
+    </div>
+
+    <div class='step ' data-x='3000' data-y='-350' data-z='20000' >
+      <!-- _S9SLIDE_  x=3000 y=-350 z=20000 -->
+
+<h2 id="play-gba-using-browser-and-controll-using-websocket">Play GBA using browser and controll using Websocket</h2>
+
+<h4 id="the-gamehttpgbajswsnchuitcc--repohttpsgithubcomnchuitgbajs-ws-by-chgu82837httpsgithubcomchgu82837"><a href="http://gbajs_ws.nchuit.cc/">The Game</a> / <a href="https://github.com/NCHUIT/gbajs-ws">Repo</a> by <a href="https://github.com/chgu82837">chgu82837</a></h4>
+
+
+    </div>
+
+    <div class='step ' data-x='0' data-y='-875' data-z='20000' data-scale='6' >
+      <!-- _S9SLIDE_  x=0 y=-875 z=20000 scale=6 -->
+
+
+    </div>
+
+    <div class='step slogen center-list' data-x='0' data-y='-875' data-z='30000' data-scale='6' >
+      <!-- _S9SLIDE_  slogen center-list x=0 y=-875 z=30000 scale=6 -->
+
+<h3 id="section-11">玩遊戲囉！</h3>
+
+<h4 id="section-12">接下來玩四個遊戲，每個遊戲第一名可以得到 5 點 + 一杯手搖飲料</h4>
+
+<h4 id="section-13">第二名得到 3 點，第三名得到 1 點</h4>
+
+<h4 id="section-14">最後結算積分，依照積分高低</h4>
+
+<ul>
+  <li>第一名：藍芽鍵盤</li>
+  <li>第二名：資訊社圖章 X 3</li>
+  <li>第三名：閃電狼海報</li>
+</ul>
+
+
+    </div>
+
+    <div class='step slogen' data-x='-1500' data-y='-1312.5' data-z='40000' data-scale='3' >
+      <!-- _S9SLIDE_  slogen x=-1500 y=-1312.5 z=40000 scale=3 -->
+
+<h2 id="websocket-">比手畫腳 Websocket 版</h2>
+
+
+    </div>
+
+    <div class='step slogen' data-x='1500' data-y='-1312.5' data-z='40000' data-scale='3' >
+      <!-- _S9SLIDE_  slogen x=1500 y=-1312.5 z=40000 scale=3 -->
+
+<h2 id="section-15">坦克大戰</h2>
+
+
+    </div>
+
+    <div class='step slogen' data-x='-1500' data-y='-437.5' data-z='40000' data-scale='3' >
+      <!-- _S9SLIDE_  slogen x=-1500 y=-437.5 z=40000 scale=3 -->
+
+<h2 id="section-16">楓之谷</h2>
+
+
+    </div>
+
+    <div class='step slogen' data-x='1500' data-y='-437.5' data-z='40000' data-scale='3' >
+      <!-- _S9SLIDE_  slogen x=1500 y=-437.5 z=40000 scale=3 -->
+
+<h2 id="gba-">GBA 干擾大賽</h2>
+
+
+    </div>
+
+    <div class='step picture center' data-x='0' data-y='-875' data-z='50000' data-scale='6' >
+      <!-- _S9SLIDE_  picture center x=0 y=-875 z=50000 scale=6 -->
+
+<p> </p>
+
+<p> </p>
+
+<p><img src="http://i.giphy.com/iESc3Uc5tqGRy.gif" alt="eat" /></p>
+
+<h3 id="section-17">結算，頒獎，吃晚餐！</h3>
+
+
+    </div>
+
+    <div class='step picture center' data-x='0' data-y='-875' data-z='60000' data-scale='6' >
+      <!-- _S9SLIDE_  picture center x=0 y=-875 z=60000 scale=6 -->
+
+<p> </p>
+
+<p> </p>
+
+<p><img src="http://i.imgur.com/SSSWhXx.png" alt="nchuit" /></p>
+
+<h3 id="section-18">感謝大家的參與！</h3>
+
+<h4 id="section-19">別忘了 6/8 有社聚！</h4>
+
+<!-- === end markdown block === -->
+
+    </div>
+
+
+</div>
+
+<div id="loading">
+    <h1>NCHUIT 2016 Demo Day</h1>
+    <h3>PastLeo</h3>
+    <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="circle" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg>
+</div>
+
+<div class="controls">
+    <div class="arrow prev"></div>
+    <div class="arrow next"></div>
+</div>
+
+<script src="http://netdna.impressjscdn.com/impressjs/0.5.3/js/impress.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+    var impressInstance;
+    $(document).ready(function(){
+        impressInstance = impress();
+        impressInstance.init();
+        /*impressInstance.prev_ori = impressInstance.prev;*/
+        impressInstance.next_ori = impressInstance.next;
+        impressInstance.next = function(){
+            impressInstance.next_ori();
+            $("div.step.active").removeClass("future");
+        };
+        $(".controls .arrow.prev").click(impressInstance.prev);
+        $(".controls .arrow.next").click(impressInstance.next);
+        if(window.location.hash)
+            $("div#impress div.step" + window.location.hash.replace("#/","#")).prevAll().removeClass("future");
+        setTimeout(function(){
+            $('div#loading').addClass('done');
+            setTimeout(function(){
+                $('div#loading').remove();
+
+            },1000);
+        },2000);
+    });
+</script>
+
+</body>
+</html>
