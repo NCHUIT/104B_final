@@ -128,7 +128,7 @@ author: PastLeo
 
 ![node-websocket](http://i.imgur.com/zpF4fQi.jpg)
 
-* [Slides](http://slides.com/jd615645/nodejs_socket) / [上課練習成果 Demo - 聊天室](https://github.com/NCHUIT/104B_nodejs_socketio) by [jd615645](https://github.com/jd615645)
+* [Slides](http://slides.com/jd615645/nodejs_socket) / [上課練習 - 聊天室](https://github.com/NCHUIT/104B_nodejs_socketio) / [The Game](http://guess.nchuit.cc) by [jd615645](https://github.com/jd615645)
 
 %%%%%%%%%%%%%%% y=-1050
 !SLIDE slogen x=-3000 y=-1050 z=20000
@@ -153,7 +153,7 @@ author: PastLeo
 
 ![tanks](http://i.imgur.com/VYmDYSI.jpg)
 
-* [Slides](http://slides.nchuit.cc/104B/104B_phaser_tanks_war/) / [The Game](http://slides.nchuit.cc/104B/104B_phaser_tanks_war/03_AI/demo/demo.html) / [Repo](https://github.com/NCHUIT/104B_phaser_tanks_war), by [lukechu1997](https://github.com/lukechu1997) and [tim54100](https://github.com/tim54100)
+* [Slides](http://slides.nchuit.cc/104B/104B_phaser_tanks_war/) / [The Game](http://slides.nchuit.cc/104B/104B_phaser_tanks_war/04/demo/) / [Repo](https://github.com/NCHUIT/104B_phaser_tanks_war), by [lukechu1997](https://github.com/lukechu1997) and [tim54100](https://github.com/tim54100)
 
 %%%%%%%%%%%%%%%
 !SLIDE center picture center-list x=600 y=-1050 z=20000
@@ -162,7 +162,7 @@ author: PastLeo
 
 ![maple-story](http://i.imgur.com/c1oGiW1.png)
 
-* [Slides 1](https://github.com/NCHUIT/104B_phaser_maple_game/raw/master/01_Basic/maple_01.pptx) / [Slides 2](http://slides.com/jayhung97724/104b_phaser_maple_game) / [The Game](http://slides.nchuit.cc/104B/104B_phaser_maple_game/02_Shoot/) / [Repo](https://github.com/NCHUIT/104B_phaser_tanks_war)
+* [Slides 1](https://github.com/NCHUIT/104B_phaser_maple_game/raw/master/01_Basic/maple_01.pptx) / [Slides 2](http://slides.com/jayhung97724/104b_phaser_maple_game) / [The Game](http://slides.nchuit.cc/104B/104B_phaser_maple_game/demo/) / [Repo](https://github.com/NCHUIT/104B_phaser_tanks_war)
 * by [LinYuChien](https://github.com/LinYuChien) and [HaoYoYo](https://github.com/jayhung97724)
 
 %%%%%%%%%%%%%%%
@@ -235,7 +235,7 @@ author: PastLeo
 
 ## 期中考彩蛋 - 知興絕對
 
-#### [傳送們](http://alvis2015.github.io/)
+#### [傳送門](http://alvis2015.github.io/)
 
 %%%%%%%%%%%%%%%
 !SLIDE x=3000 y=-350 z=20000
@@ -267,20 +267,28 @@ author: PastLeo
 
 ## 比手畫腳 Websocket 版
 
+#### [The Game](http://guess.nchuit.cc)
+
 %%%%%%%%%%%%%%%
 !SLIDE slogen x=1500 y=-1312.5 z=40000 scale=3
 
 ## 坦克大戰
+
+#### [The Game](http://slides.nchuit.cc/104B/104B_phaser_tanks_war/04/demo/)
 
 %%%%%%%%%%%%%%%
 !SLIDE slogen x=-1500 y=-437.5 z=40000 scale=3
 
 ## 楓之谷
 
+#### [The Game](http://slides.nchuit.cc/104B/104B_phaser_maple_game/demo/)
+
 %%%%%%%%%%%%%%%
 !SLIDE slogen x=1500 y=-437.5 z=40000 scale=3
 
 ## GBA 干擾大賽
+
+#### [The Game](http://gbajs_ws.nchuit.cc/)
 
 %%%%%%%%%%%%%%%
 !SLIDE picture center x=0 y=-875 z=50000 scale=6
