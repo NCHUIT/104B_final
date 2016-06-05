@@ -248,7 +248,7 @@ author: PastLeo
 !SLIDE x=0 y=-875 z=20000 scale=6
 
 %%%%%%%%%%%%%%%
-!SLIDE slogen center-list x=0 y=-875 z=30000 scale=6
+!SLIDE slogen opaqueWhenActive center-list x=0 y=-875 z=30000 scale=6
 
 ### 玩遊戲囉！
 
@@ -286,12 +286,19 @@ author: PastLeo
 %%%%%%%%%%%%%%%
 !SLIDE slogen x=1500 y=-437.5 z=40000 scale=3
 
+## 知興絕對
+
+#### [The Game](http://alvis2015.github.io/)
+
+%%%%%%%%%%%%%%%
+!SLIDE picture center x=0 y=-875 z=50000 scale=6
+
 ## GBA 干擾大賽
 
 #### [The Game](http://gbajs_ws.nchuit.cc/)
 
 %%%%%%%%%%%%%%%
-!SLIDE picture center x=0 y=-875 z=50000 scale=6
+!SLIDE picture center x=0 y=-875 z=60000 scale=6
 
 &nbsp;
 
@@ -302,7 +309,7 @@ author: PastLeo
 ### 結算，頒獎，吃晚餐！
 
 %%%%%%%%%%%%%%%
-!SLIDE picture center x=0 y=-875 z=60000 scale=6
+!SLIDE picture center x=0 y=-875 z=70000 scale=6
 
 &nbsp;
 
